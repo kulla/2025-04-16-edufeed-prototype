@@ -1,11 +1,16 @@
+import '@mantine/core/styles.css'
+import { Button, createTheme, MantineProvider } from '@mantine/core'
 import './App.css'
+
+const theme = createTheme({})
 
 const App = () => {
   return (
-    <main className="content">
-      <h1>Rsbuild with React</h1>
-      <p>Start building amazing things with Rsbuild.</p>
-    </main>
+    <MantineProvider theme={theme}>
+      <Button variant="filled" color="blue">
+        Button
+      </Button>
+    </MantineProvider>
   )
 }
 
