@@ -1,4 +1,3 @@
-import '@picocss/pico/css/pico.min.css'
 import './App.css'
 
 const App = () => {
