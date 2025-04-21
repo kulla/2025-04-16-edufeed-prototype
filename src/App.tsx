@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Accounts from './components/accounts'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
-import { HeartHandshake } from 'lucide-react'
+import { ChartColumn, HeartHandshake, ScrollText, Users } from 'lucide-react'
 
 const App = () => {
   const [opened, { toggle }] = useDisclosure()
@@ -30,18 +30,21 @@ const App = () => {
           Übersicht
         </Title>
         <NavLink
-          active={main.name === 'accounts'}
           label="Alle Accounts"
+          leftSection={<Users size={18} />}
+          active={main.name === 'accounts'}
           onClick={() => setMain({ name: 'accounts' })}
         />
         <NavLink
-          active={main.name === 'event-log'}
           label="Event Log"
+          leftSection={<ScrollText size={18} />}
+          active={main.name === 'event-log'}
           onClick={() => setMain({ name: 'event-log' })}
         />
         <NavLink
-          active={main.name === 'statistics'}
           label="Statistik"
+          leftSection={<ChartColumn size={18} />}
+          active={main.name === 'statistics'}
           onClick={() => setMain({ name: 'statistics' })}
         />
       </AppShell.Navbar>
