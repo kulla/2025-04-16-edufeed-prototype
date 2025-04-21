@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from 'react'
 
-type Event = CreateUserEvent
+export type Event = CreateUserEvent
 
 interface CreateUserEvent {
   type: 'create-user'

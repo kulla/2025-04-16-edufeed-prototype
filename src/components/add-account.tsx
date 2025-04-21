@@ -1,9 +1,11 @@
 import { TextInput, Group, Button, Title, Container } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import useEventLog from '../hooks/event-log'
+import { getCurrentUserNames } from '../utils'
 
 export default function AddAccount() {
-  const events = useEventLog()
+  const { events, addEvent } = useEventLog()
+  const currentUserNames = getCurrentUserNames(events)
   const form = useForm({
     initialValues: {
       userName: '',
@@ -20,13 +22,16 @@ export default function AddAccount() {
         if (value.length < 3) {
           return 'Benutzername muss mindestens 3 Zeichen lang sein'
         }
+        if (currentUserNames.includes(value)) {
+          return 'Benutzername ist bereits vergeben'
+        }
         return null
       },
     },
   })
 
   const handleSubmit = (name: string) => {
-    events.addEvent({ type: 'create-user', name })
+    addEvent({ type: 'create-user', name })
   }
 
   return (
