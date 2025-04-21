@@ -25,7 +25,7 @@ function AppWithProvider() {
 
 function App() {
   const [opened, { toggle }] = useDisclosure()
-  const [main, setMain] = useState<OpenedView>({ name: 'accounts' })
+  const [main, setMain] = useState<OpenedView>({ name: 'add-account' })
 
   return (
     <AppShell
