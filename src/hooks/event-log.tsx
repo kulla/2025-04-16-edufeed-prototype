@@ -8,7 +8,11 @@ import {
 
 export type Event = CreateUserEvent
 
-interface CreateUserEvent {
+interface AbstractEvent {
+  eventId: string
+}
+
+interface CreateUserEvent extends AbstractEvent {
   type: 'create-user'
   name: string
 }
@@ -24,8 +28,9 @@ const EventLogContext = createContext<{
 export function EventLogProvider({ children }: { children: ReactNode }) {
   const [events, setEvents] = useState<Event[]>([])
 
-  const addEvent = useCallback((event: Event) => {
-    setEvents((prevEvents) => [...prevEvents, event])
+  const addEvent = useCallback((event: Omit<Event, 'eventId'>) => {
+    const newEvent = { ...event, eventId: crypto.randomUUID() }
+    setEvents((prevEvents) => [...prevEvents, newEvent])
   }, [])
 
   return (
