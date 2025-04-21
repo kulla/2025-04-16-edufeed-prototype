@@ -1,18 +1,7 @@
-import '@mantine/core/styles.css'
-import { createTheme, MantineProvider, AppShell, Burger } from '@mantine/core'
+import { AppShell, Burger } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
-const theme = createTheme({})
-
 const App = () => {
-  return (
-    <MantineProvider theme={theme}>
-      <Demo />
-    </MantineProvider>
-  )
-}
-
-function Demo() {
   const [opened, { toggle }] = useDisclosure()
 
   return (
