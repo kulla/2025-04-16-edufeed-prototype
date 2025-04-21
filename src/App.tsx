@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Accounts from './components/accounts'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
+import { HeartHandshake } from 'lucide-react'
 
 const App = () => {
   const [opened, { toggle }] = useDisclosure()
@@ -18,7 +19,10 @@ const App = () => {
     >
       <AppShell.Header p="sm">
         <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
-        <Title>Edufeed</Title>
+
+        <Title order={2}>
+          <HeartHandshake color="red" /> Edufeed
+        </Title>
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
