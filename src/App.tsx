@@ -1,4 +1,4 @@
-import { AppShell, Burger } from '@mantine/core'
+import { AppShell, Burger, Title } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 
 const App = () => {
@@ -12,6 +12,7 @@ const App = () => {
     >
       <AppShell.Header p="sm">
         <Burger opened={opened} onClick={toggle} size="sm" hiddenFrom="sm" />
+        <Title>Edufeed</Title>
       </AppShell.Header>
 
       <AppShell.Navbar p="md">Navbar</AppShell.Navbar>
