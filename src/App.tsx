@@ -9,12 +9,21 @@ import {
 } from 'lucide-react'
 import { useState } from 'react'
 
+import { EventLogProvider } from './hooks/event-log'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
 import Accounts from './components/accounts'
 import AddAccount from './components/add-account'
 
-const App = () => {
+function AppWithProvider() {
+  return (
+    <EventLogProvider>
+      <App />
+    </EventLogProvider>
+  )
+}
+
+function App() {
   const [opened, { toggle }] = useDisclosure()
   const [main, setMain] = useState<OpenedView>({ name: 'accounts' })
 
@@ -92,4 +101,4 @@ type OpenedView =
   | { name: 'event-log' }
   | { name: 'statistics' }
 
-export default App
+export default AppWithProvider
