@@ -31,7 +31,7 @@ const App = () => {
         </Title>
         <NavLink
           active={main.name === 'accounts'}
-          label="Accounts"
+          label="Alle Accounts"
           onClick={() => setMain({ name: 'accounts' })}
         />
         <NavLink
@@ -41,7 +41,7 @@ const App = () => {
         />
         <NavLink
           active={main.name === 'statistics'}
-          label="Statistics"
+          label="Statistik"
           onClick={() => setMain({ name: 'statistics' })}
         />
       </AppShell.Navbar>
