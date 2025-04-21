@@ -6,14 +6,24 @@ import {
   ScrollText,
   UserRoundPlus,
   Users,
+  User,
+  BookText,
+  Globe,
+  BookmarkCheck,
+  Bell,
 } from 'lucide-react'
 import { useState } from 'react'
 
-import { EventLogProvider } from './hooks/event-log'
+import useEventLog, { EventLogProvider } from './hooks/event-log'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
 import Accounts from './components/accounts'
 import AddAccount from './components/add-account'
+import { getCurrentUserNames } from './utils'
+import CreateMaterial from './components/create-material'
+import Explore from './components/explore'
+import Notifications from './components/notifications'
+import CurratedOER from './components/currated-oer'
 
 function AppWithProvider() {
   return (
@@ -26,6 +36,8 @@ function AppWithProvider() {
 function App() {
   const [opened, { toggle }] = useDisclosure()
   const [main, setMain] = useState<OpenedView>({ name: 'add-account' })
+  const { events } = useEventLog()
+  const accounts = getCurrentUserNames(events)
 
   return (
     <AppShell
@@ -51,6 +63,40 @@ function App() {
           active={main.name === 'add-account'}
           onClick={() => setMain({ name: 'add-account' })}
         />
+
+        {accounts.map((account) => (
+          <NavLink
+            key={account}
+            label={`Benutzer „${account}“`}
+            leftSection={<User size={18} />}
+            opened
+          >
+            <NavLink
+              label="Meine Lernmaterialien"
+              leftSection={<BookText size={18} />}
+              active={main.name === 'material' && main.account === account}
+              onClick={() => setMain({ name: 'material', account })}
+            />
+            <NavLink
+              label="Explore"
+              leftSection={<Globe size={18} />}
+              active={main.name === 'explore' && main.account === account}
+              onClick={() => setMain({ name: 'explore', account })}
+            />
+            <NavLink
+              label="Benachrichtigungen"
+              leftSection={<Bell size={18} />}
+              active={main.name === 'notification' && main.account === account}
+              onClick={() => setMain({ name: 'notification', account })}
+            />
+            <NavLink
+              label="Meine kuratierten OER"
+              leftSection={<BookmarkCheck size={18} />}
+              active={main.name === 'currated-oer' && main.account === account}
+              onClick={() => setMain({ name: 'currated-oer', account })}
+            />
+          </NavLink>
+        ))}
 
         <Title order={4} mb="md" mt="lg">
           Übersicht
@@ -89,6 +135,14 @@ function App() {
         return <EventLog />
       case 'statistics':
         return <Statistics />
+      case 'material':
+        return <CreateMaterial account={main.account} />
+      case 'explore':
+        return <Explore account={main.account} />
+      case 'notification':
+        return <Notifications account={main.account} />
+      case 'currated-oer':
+        return <CurratedOER account={main.account} />
       default:
         return null
     }
@@ -97,6 +151,10 @@ function App() {
 
 type OpenedView =
   | { name: 'add-account' }
+  | { name: 'material'; account: string }
+  | { name: 'explore'; account: string }
+  | { name: 'notification'; account: string }
+  | { name: 'currated-oer'; account: string }
   | { name: 'accounts' }
   | { name: 'event-log' }
   | { name: 'statistics' }
