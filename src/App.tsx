@@ -1,11 +1,18 @@
 import { AppShell, Burger, NavLink, Title } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import {
+  ChartColumn,
+  HeartHandshake,
+  ScrollText,
+  UserRoundPlus,
+  Users,
+} from 'lucide-react'
 import { useState } from 'react'
 
-import Accounts from './components/accounts'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
-import { ChartColumn, HeartHandshake, ScrollText, Users } from 'lucide-react'
+import Accounts from './components/accounts'
+import AddAccount from './components/add-account'
 
 const App = () => {
   const [opened, { toggle }] = useDisclosure()
@@ -27,6 +34,16 @@ const App = () => {
 
       <AppShell.Navbar p="md">
         <Title order={4} mb="md">
+          Deine Accounts
+        </Title>
+        <NavLink
+          label="Neuen Account hinzufügen"
+          leftSection={<UserRoundPlus size={18} />}
+          active={main.name === 'add-account'}
+          onClick={() => setMain({ name: 'add-account' })}
+        />
+
+        <Title order={4} mb="md" mt="lg">
           Übersicht
         </Title>
         <NavLink
@@ -55,6 +72,8 @@ const App = () => {
 
   function renderMain() {
     switch (main.name) {
+      case 'add-account':
+        return <AddAccount />
       case 'accounts':
         return <Accounts />
       case 'event-log':
@@ -68,6 +87,7 @@ const App = () => {
 }
 
 type OpenedView =
+  | { name: 'add-account' }
   | { name: 'accounts' }
   | { name: 'event-log' }
   | { name: 'statistics' }
