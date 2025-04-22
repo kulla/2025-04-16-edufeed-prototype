@@ -1,6 +1,6 @@
 import { Container, Flex, Title, Text } from '@mantine/core'
 import useEventLog, { type Event } from '../hooks/event-log'
-import { UserRoundPlus } from 'lucide-react'
+import { BookText, UserRoundPlus } from 'lucide-react'
 import { reverse } from 'ramda'
 
 export default function EventLog() {
@@ -37,6 +37,8 @@ function EventIcon({ event }: { event: Event }) {
   switch (event.type) {
     case 'create-user':
       return <UserRoundPlus />
+    case 'create-learning-material':
+      return <BookText />
     default:
       return null
   }
@@ -46,7 +48,16 @@ function getEventText(event: Event) {
   switch (event.type) {
     case 'create-user':
       return `Benutzer „${event.name}“ wurde erstellt.`
+    case 'create-learning-material':
+      return `Lernmaterial von „${event.account}“ wurde erstellt: ${summarizeContent(event.content)}`
     default:
       return ''
   }
+}
+
+function summarizeContent(content: string) {
+  const singleLineContent = content.replace(/\n/g, ' ')
+  return singleLineContent.length > 25
+    ? `${singleLineContent.slice(0, 25)}...`
+    : singleLineContent
 }

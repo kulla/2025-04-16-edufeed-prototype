@@ -1,8 +1,18 @@
 import { Button, Group, Title, Modal, Textarea } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
+import useEventLog from '../hooks/event-log'
+import { useState } from 'react'
 
 export default function CreateMaterial({ account }: { account: string }) {
   const [opened, { open, close }] = useDisclosure(false)
+  const [content, setContent] = useState('')
+  const { addEvent } = useEventLog()
+
+  const handleSave = () => {
+    addEvent({ type: 'create-learning-material', account, content })
+    setContent('')
+    close()
+  }
 
   return (
     <>
@@ -18,7 +28,12 @@ export default function CreateMaterial({ account }: { account: string }) {
           placeholder="Geben Sie den Inhalt des Lernmaterials ein..."
           autosize
           minRows={5}
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
         />
+        <Group justify="flex-end" mt="md">
+          <Button onClick={handleSave}>Speichern</Button>
+        </Group>
       </Modal>
     </>
   )

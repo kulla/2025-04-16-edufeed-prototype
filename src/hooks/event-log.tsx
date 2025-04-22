@@ -6,20 +6,23 @@ import {
   type ReactNode,
 } from 'react'
 
-export type Event = CreateUserEvent
+type BaseEvent = CreateUserEvent | CreateLearningMaterialEvent
+export type Event = BaseEvent & { eventId: string }
 
-interface AbstractEvent {
-  eventId: string
-}
-
-interface CreateUserEvent extends AbstractEvent {
+interface CreateUserEvent {
   type: 'create-user'
   name: string
 }
 
+interface CreateLearningMaterialEvent {
+  type: 'create-learning-material'
+  account: string
+  content: string
+}
+
 const EventLogContext = createContext<{
   events: Event[]
-  addEvent: (event: Omit<Event, 'eventId'>) => void
+  addEvent: (event: BaseEvent) => void
 }>({
   events: [],
   addEvent: () => {},
@@ -28,7 +31,7 @@ const EventLogContext = createContext<{
 export function EventLogProvider({ children }: { children: ReactNode }) {
   const [events, setEvents] = useState<Event[]>([])
 
-  const addEvent = useCallback((event: Omit<Event, 'eventId'>) => {
+  const addEvent = useCallback((event: BaseEvent) => {
     const newEvent = { ...event, eventId: crypto.randomUUID() }
     setEvents((prevEvents) => [...prevEvents, newEvent])
   }, [])
