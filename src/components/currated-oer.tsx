@@ -31,7 +31,7 @@ export default function CuratedOER({ account }: { account: string }) {
     .filter((event) => event.type === 'curate-oer')
     .filter(
       (event) =>
-        event.actor === account || trustedAccounts.includes(event.account),
+        event.actor === account || trustedAccounts.includes(event.actor),
     )
 
   const handleTrustUser = () => {
