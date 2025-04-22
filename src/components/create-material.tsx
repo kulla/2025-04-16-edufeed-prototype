@@ -7,10 +7,12 @@ import {
   Card,
   Text,
   SimpleGrid,
+  Flex,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import useEventLog from '../hooks/event-log'
 import { useState } from 'react'
+import { BookText } from 'lucide-react'
 
 export default function CreateMaterial({ account }: { account: string }) {
   const [opened, { open, close }] = useDisclosure(false)
@@ -51,9 +53,12 @@ export default function CreateMaterial({ account }: { account: string }) {
       <SimpleGrid cols={3} spacing="lg" mt="lg">
         {myLearningMaterials.map((material) => (
           <Card key={material} shadow="sm" padding="lg">
-            <Text lineClamp={2} style={{ whiteSpace: 'pre-wrap' }}>
-              {material}
-            </Text>
+            <Flex gap="md" align="center">
+              <BookText />
+              <Text lineClamp={2} style={{ whiteSpace: 'pre-wrap' }}>
+                {material}
+              </Text>
+            </Flex>
           </Card>
         ))}
       </SimpleGrid>
