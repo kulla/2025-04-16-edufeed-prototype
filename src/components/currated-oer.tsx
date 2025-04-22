@@ -4,17 +4,26 @@ import useEventLog from '../hooks/event-log'
 export default function CuratedOER({ account }: { account: string }) {
   const { events } = useEventLog()
 
-  // Filter events to get only the curated OERs by the current user
+  const trustedAccounts = events
+    .filter((event) => event.type === 'trust')
+    .filter((event) => event.actor === account)
+    .map((event) => event.account)
+  const untrustedAccounts = events
+    .filter((event) => event.type === 'create-user')
+    .map((event) => event.name)
+    .filter((name) => !trustedAccounts.includes(name) && name !== account)
   const curatedOERs = events
     .filter((event) => event.type === 'curate-oer')
-    .filter((event) => event.actor === account)
+    .filter(
+      (event) =>
+        event.actor === account || trustedAccounts.includes(event.account),
+    )
 
   return (
     <Container size="lg" mt="md">
       <Title order={2} mb="md">
         Kuratierte OERs (Konto: {account})
       </Title>
-      <Text mb="lg">Hier können Sie Ihre kuratierten OERs verwalten.</Text>
       <SimpleGrid cols={3} spacing="lg">
         {curatedOERs.map((event) => (
           <Card key={event.eventId} shadow="sm" padding="lg" withBorder>

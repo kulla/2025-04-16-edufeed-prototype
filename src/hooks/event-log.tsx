@@ -11,6 +11,7 @@ type BaseEvent =
   | CreateLearningMaterialEvent
   | LikeEvent
   | CurateOEREvent
+  | TrustEvent
 export type Event = BaseEvent & { eventId: string }
 
 interface CreateUserEvent {
@@ -36,6 +37,12 @@ interface CurateOEREvent {
   actor: string
   account: string
   content: string
+}
+
+interface TrustEvent {
+  type: 'trust'
+  actor: string
+  account: string
 }
 
 const EventLogContext = createContext<{
