@@ -1,4 +1,13 @@
-import { Button, Group, Title, Modal, Textarea } from '@mantine/core'
+import {
+  Button,
+  Group,
+  Title,
+  Modal,
+  Textarea,
+  Card,
+  Text,
+  SimpleGrid,
+} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import useEventLog from '../hooks/event-log'
 import { useState } from 'react'
@@ -6,7 +15,11 @@ import { useState } from 'react'
 export default function CreateMaterial({ account }: { account: string }) {
   const [opened, { open, close }] = useDisclosure(false)
   const [content, setContent] = useState('')
-  const { addEvent } = useEventLog()
+  const { events, addEvent } = useEventLog()
+  const myLearningMaterials = events
+    .filter((event) => event.type === 'create-learning-material')
+    .filter((event) => event.account === account)
+    .map((event) => event.content)
 
   const handleSave = () => {
     addEvent({ type: 'create-learning-material', account, content })
@@ -35,6 +48,15 @@ export default function CreateMaterial({ account }: { account: string }) {
           <Button onClick={handleSave}>Speichern</Button>
         </Group>
       </Modal>
+      <SimpleGrid cols={3} spacing="lg" mt="lg">
+        {myLearningMaterials.map((material) => (
+          <Card key={material} shadow="sm" padding="lg">
+            <Text lineClamp={2} style={{ whiteSpace: 'pre-wrap' }}>
+              {material}
+            </Text>
+          </Card>
+        ))}
+      </SimpleGrid>
     </>
   )
 }
