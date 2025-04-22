@@ -20,7 +20,7 @@ export default function Explore({ account }: { account: string }) {
   return (
     <Container size="sm" ml={0}>
       <Title order={2} mb="md">
-        Inhalter anderer Accounts
+        Entdecke andere OERs (Konto {account})
       </Title>
       {otherContents.map((event) => (
         <OERCard key={event.eventId} event={event} />
