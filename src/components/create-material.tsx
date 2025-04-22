@@ -7,19 +7,15 @@ export default function CreateMaterial({ account }: { account: string }) {
   return (
     <>
       <Title order={2} mb="lg">
-        Meine Lernmaterialien (von „{account}“)
+        Meine Lernmaterialien (Konto: {account})
       </Title>
       <Group mb="lg">
-        <Button onClick={open}>Neues Lernmaterial erstellen</Button>
+        <Button onClick={open}>Lernmaterial hinzufügen</Button>
       </Group>
-      <Modal
-        opened={opened}
-        onClose={close}
-        title="Neues Lernmaterial erstellen"
-      >
+      <Modal opened={opened} onClose={close} title="Lernmaterial hinzufügen">
         <Textarea
-          label="Lernmaterial"
-          placeholder="Geben Sie hier Ihr Lernmaterial ein."
+          label="Inhalt des Lernmaterials"
+          placeholder="Geben Sie den Inhalt des Lernmaterials ein..."
           autosize
           minRows={5}
         />
