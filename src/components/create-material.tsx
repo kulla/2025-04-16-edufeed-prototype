@@ -52,7 +52,7 @@ export default function CreateMaterial({ account }: { account: string }) {
       </Modal>
       <SimpleGrid cols={3} spacing="lg" mt="lg">
         {myLearningMaterials.map((material) => (
-          <Card key={material} shadow="sm" padding="lg">
+          <Card key={material} shadow="sm" padding="lg" withBorder>
             <Flex gap="md" align="center">
               <BookText />
               <Text lineClamp={2} style={{ whiteSpace: 'pre-wrap' }}>
