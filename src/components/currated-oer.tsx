@@ -22,6 +22,9 @@ export default function CuratedOER({ account }: { account: string }) {
               OER von „{event.account}”:
             </Title>
             <Text style={{ whiteSpace: 'pre-wrap' }}>{event.content}</Text>
+            <Text mt="md" size="sm" c="dimmed">
+              Kuratiert von: {event.actor}
+            </Text>
           </Card>
         ))}
       </SimpleGrid>
