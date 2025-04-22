@@ -17,7 +17,6 @@ import { useState } from 'react'
 import useEventLog, { EventLogProvider } from './hooks/event-log'
 import EventLog from './components/event-log'
 import Statistics from './components/statistics'
-import Accounts from './components/accounts'
 import AddAccount from './components/add-account'
 import { getCurrentUserNames } from './utils'
 import CreateMaterial from './components/create-material'
@@ -102,12 +101,6 @@ function App() {
           Übersicht
         </Title>
         <NavLink
-          label="Alle Accounts"
-          leftSection={<Users size={18} />}
-          active={main.name === 'accounts'}
-          onClick={() => setMain({ name: 'accounts' })}
-        />
-        <NavLink
           label="Event Log"
           leftSection={<ScrollText size={18} />}
           active={main.name === 'event-log'}
@@ -129,8 +122,6 @@ function App() {
     switch (main.name) {
       case 'add-account':
         return <AddAccount />
-      case 'accounts':
-        return <Accounts />
       case 'event-log':
         return <EventLog />
       case 'statistics':
@@ -155,7 +146,6 @@ type OpenedView =
   | { name: 'explore'; account: string }
   | { name: 'notification'; account: string }
   | { name: 'currated-oer'; account: string }
-  | { name: 'accounts' }
   | { name: 'event-log' }
   | { name: 'statistics' }
 
