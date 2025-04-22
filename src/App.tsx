@@ -1,4 +1,4 @@
-import { AppShell, Burger, NavLink, Title } from '@mantine/core'
+import { AppShell, Burger, NavLink, ScrollArea, Title } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
   ChartColumn,
@@ -53,65 +53,71 @@ function App() {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
-        <Title order={4} mb="md">
-          Deine Accounts
-        </Title>
-        <NavLink
-          label="Neuen Account hinzufügen"
-          leftSection={<UserRoundPlus size={18} />}
-          active={main.name === 'add-account'}
-          onClick={() => setMain({ name: 'add-account' })}
-        />
-
-        {accounts.map((account) => (
+        <ScrollArea>
+          <Title order={4} mb="md">
+            Deine Accounts
+          </Title>
           <NavLink
-            key={account}
-            label={`Benutzer „${account}“`}
-            leftSection={<User size={18} />}
-            opened
-          >
-            <NavLink
-              label="Meine Lernmaterialien"
-              leftSection={<BookText size={18} />}
-              active={main.name === 'material' && main.account === account}
-              onClick={() => setMain({ name: 'material', account })}
-            />
-            <NavLink
-              label="Explore"
-              leftSection={<Globe size={18} />}
-              active={main.name === 'explore' && main.account === account}
-              onClick={() => setMain({ name: 'explore', account })}
-            />
-            <NavLink
-              label="Meine kuratierten OER"
-              leftSection={<BookmarkCheck size={18} />}
-              active={main.name === 'currated-oer' && main.account === account}
-              onClick={() => setMain({ name: 'currated-oer', account })}
-            />
-            <NavLink
-              label="Benachrichtigungen"
-              leftSection={<Bell size={18} />}
-              active={main.name === 'notification' && main.account === account}
-              onClick={() => setMain({ name: 'notification', account })}
-            />
-          </NavLink>
-        ))}
+            label="Neuen Account hinzufügen"
+            leftSection={<UserRoundPlus size={18} />}
+            active={main.name === 'add-account'}
+            onClick={() => setMain({ name: 'add-account' })}
+          />
 
-        <Title order={4} mb="md" mt="lg">
-          Übersicht
-        </Title>
-        <NavLink
-          label="Event Log"
-          leftSection={<ScrollText size={18} />}
-          active={main.name === 'event-log'}
-          onClick={() => setMain({ name: 'event-log' })}
-        />
-        <NavLink
-          label="Statistik"
-          leftSection={<ChartColumn size={18} />}
-          active={main.name === 'statistics'}
-          onClick={() => setMain({ name: 'statistics' })}
-        />
+          {accounts.map((account) => (
+            <NavLink
+              key={account}
+              label={`Benutzer „${account}“`}
+              leftSection={<User size={18} />}
+              opened
+            >
+              <NavLink
+                label="Meine Lernmaterialien"
+                leftSection={<BookText size={18} />}
+                active={main.name === 'material' && main.account === account}
+                onClick={() => setMain({ name: 'material', account })}
+              />
+              <NavLink
+                label="Explore"
+                leftSection={<Globe size={18} />}
+                active={main.name === 'explore' && main.account === account}
+                onClick={() => setMain({ name: 'explore', account })}
+              />
+              <NavLink
+                label="Meine kuratierten OER"
+                leftSection={<BookmarkCheck size={18} />}
+                active={
+                  main.name === 'currated-oer' && main.account === account
+                }
+                onClick={() => setMain({ name: 'currated-oer', account })}
+              />
+              <NavLink
+                label="Benachrichtigungen"
+                leftSection={<Bell size={18} />}
+                active={
+                  main.name === 'notification' && main.account === account
+                }
+                onClick={() => setMain({ name: 'notification', account })}
+              />
+            </NavLink>
+          ))}
+
+          <Title order={4} mb="md" mt="lg">
+            Übersicht
+          </Title>
+          <NavLink
+            label="Event Log"
+            leftSection={<ScrollText size={18} />}
+            active={main.name === 'event-log'}
+            onClick={() => setMain({ name: 'event-log' })}
+          />
+          <NavLink
+            label="Statistik"
+            leftSection={<ChartColumn size={18} />}
+            active={main.name === 'statistics'}
+            onClick={() => setMain({ name: 'statistics' })}
+          />
+        </ScrollArea>
       </AppShell.Navbar>
 
       <AppShell.Main>{renderMain()}</AppShell.Main>
