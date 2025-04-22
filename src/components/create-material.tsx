@@ -24,6 +24,9 @@ export default function CreateMaterial({ account }: { account: string }) {
     .map((event) => event.content)
 
   const handleSave = () => {
+    if (content.trim() === '') {
+      return
+    }
     addEvent({ type: 'create-learning-material', account, content })
     setContent('')
     close()
