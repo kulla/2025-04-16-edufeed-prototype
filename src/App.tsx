@@ -84,16 +84,16 @@ function App() {
               onClick={() => setMain({ name: 'explore', account })}
             />
             <NavLink
-              label="Benachrichtigungen"
-              leftSection={<Bell size={18} />}
-              active={main.name === 'notification' && main.account === account}
-              onClick={() => setMain({ name: 'notification', account })}
-            />
-            <NavLink
               label="Meine kuratierten OER"
               leftSection={<BookmarkCheck size={18} />}
               active={main.name === 'currated-oer' && main.account === account}
               onClick={() => setMain({ name: 'currated-oer', account })}
+            />
+            <NavLink
+              label="Benachrichtigungen"
+              leftSection={<Bell size={18} />}
+              active={main.name === 'notification' && main.account === account}
+              onClick={() => setMain({ name: 'notification', account })}
             />
           </NavLink>
         ))}
