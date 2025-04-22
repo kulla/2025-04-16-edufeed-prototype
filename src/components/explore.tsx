@@ -1,6 +1,7 @@
-import { Card, Title, Text, Container } from '@mantine/core'
+import { Group, Button, Card, Title, Text, Container } from '@mantine/core'
 import useEventLog from '../hooks/event-log'
 import { reverse } from 'ramda'
+import { BookmarkCheck, Heart } from 'lucide-react'
 
 export default function Explore({ account }: { account: string }) {
   const { events } = useEventLog()
@@ -18,9 +19,25 @@ export default function Explore({ account }: { account: string }) {
       {otherContents.map((event) => (
         <Card key={event.eventId} shadow="sm" padding="lg" mt="md" withBorder>
           <Title order={3} mb="md">
-            „{event.account}” hat folgendes OER erstellt:
+            OER von „{event.account}”:
           </Title>
           <Text style={{ whiteSpace: 'pre-wrap' }}>{event.content}</Text>
+          <Group gap={10} mt="md">
+            <Button
+              leftSection={<Heart size={16} />}
+              variant="light"
+              color="red"
+            >
+              Like
+            </Button>
+            <Button
+              leftSection={<BookmarkCheck size={16} />}
+              variant="light"
+              color="green"
+            >
+              Wertvolles OER
+            </Button>
+          </Group>
         </Card>
       ))}
     </Container>
