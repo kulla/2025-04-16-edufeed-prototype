@@ -6,7 +6,11 @@ import {
   type ReactNode,
 } from 'react'
 
-type BaseEvent = CreateUserEvent | CreateLearningMaterialEvent
+type BaseEvent =
+  | CreateUserEvent
+  | CreateLearningMaterialEvent
+  | LikeEvent
+  | CurateOEREvent
 export type Event = BaseEvent & { eventId: string }
 
 interface CreateUserEvent {
@@ -16,6 +20,20 @@ interface CreateUserEvent {
 
 interface CreateLearningMaterialEvent {
   type: 'create-learning-material'
+  account: string
+  content: string
+}
+
+interface LikeEvent {
+  type: 'like'
+  actor: string
+  account: string
+  content: string
+}
+
+interface CurateOEREvent {
+  type: 'curate-oer'
+  actor: string
   account: string
   content: string
 }

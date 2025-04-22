@@ -4,12 +4,30 @@ import { reverse } from 'ramda'
 import { BookmarkCheck, Heart } from 'lucide-react'
 
 export default function Explore({ account }: { account: string }) {
-  const { events } = useEventLog()
+  const { events, addEvent } = useEventLog()
   const otherContents = reverse(
     events
       .filter((event) => event.type === 'create-learning-material')
       .filter((event) => event.account !== account),
   )
+
+  const handleLike = (account: string, content: string) => {
+    addEvent({
+      type: 'like',
+      actor: account,
+      account,
+      content,
+    })
+  }
+
+  const handleCurateOER = (account: string, content: string) => {
+    addEvent({
+      type: 'curate-oer',
+      actor: account,
+      account,
+      content,
+    })
+  }
 
   return (
     <Container size="sm" ml={0}>
@@ -27,6 +45,7 @@ export default function Explore({ account }: { account: string }) {
               leftSection={<Heart size={16} />}
               variant="light"
               color="red"
+              onClick={() => handleLike(event.account, event.content)}
             >
               Like
             </Button>
@@ -34,6 +53,7 @@ export default function Explore({ account }: { account: string }) {
               leftSection={<BookmarkCheck size={16} />}
               variant="light"
               color="green"
+              onClick={() => handleCurateOER(event.account, event.content)}
             >
               Wertvolles OER
             </Button>

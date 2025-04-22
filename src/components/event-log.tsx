@@ -1,6 +1,6 @@
 import { Container, Flex, Title, Text } from '@mantine/core'
 import useEventLog, { type Event } from '../hooks/event-log'
-import { BookText, UserRoundPlus } from 'lucide-react'
+import { BookText, UserRoundPlus, Heart, BookmarkCheck } from 'lucide-react'
 import { reverse } from 'ramda'
 
 export default function EventLog() {
@@ -39,6 +39,10 @@ function EventIcon({ event }: { event: Event }) {
       return <UserRoundPlus />
     case 'create-learning-material':
       return <BookText />
+    case 'like':
+      return <Heart />
+    case 'curate-oer':
+      return <BookmarkCheck />
     default:
       return null
   }
@@ -50,6 +54,10 @@ function getEventText(event: Event) {
       return `Benutzer „${event.name}“ wurde erstellt.`
     case 'create-learning-material':
       return `Lernmaterial von „${event.account}“ wurde erstellt: ${summarizeContent(event.content)}`
+    case 'like':
+      return `„${event.actor}“ hat das OER von „${event.account}“ geliked: ${summarizeContent(event.content)}`
+    case 'curate-oer':
+      return `„${event.actor}“ hat das OER von „${event.account}“ als wertvolles OER markiert: ${summarizeContent(event.content)}`
     default:
       return ''
   }
