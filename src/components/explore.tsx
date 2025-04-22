@@ -11,20 +11,20 @@ export default function Explore({ account }: { account: string }) {
       .filter((event) => event.account !== account),
   )
 
-  const handleLike = (account: string, content: string) => {
+  const handleLike = (accountName: string, content: string) => {
     addEvent({
       type: 'like',
       actor: account,
-      account,
+      account: accountName,
       content,
     })
   }
 
-  const handleCurateOER = (account: string, content: string) => {
+  const handleCurateOER = (accountName: string, content: string) => {
     addEvent({
       type: 'curate-oer',
       actor: account,
-      account,
+      account: accountName,
       content,
     })
   }
