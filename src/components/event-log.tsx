@@ -42,15 +42,15 @@ function EventEntry({ event }: { event: Event }) {
 function EventIcon({ event }: { event: Event }) {
   switch (event.type) {
     case 'create-user':
-      return <UserRoundPlus />
+      return <UserRoundPlus color="blue" />
     case 'create-learning-material':
       return <BookText />
     case 'like':
-      return <Heart />
+      return <Heart color="red" />
     case 'curate-oer':
-      return <BookmarkCheck />
+      return <BookmarkCheck color="green" />
     case 'trust':
-      return <Handshake />
+      return <Handshake color="orange" />
     default:
       return null
   }
