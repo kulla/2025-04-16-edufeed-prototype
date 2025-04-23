@@ -1,47 +1,49 @@
 # Edufeed Prototype
 
-This repository shows how the edufeed can be used for implementing collaboration in the educational space.
+This repository demonstrates the Edufeed concept, showcasing how it can be used to foster collaboration in the educational space.
 
-This repo is for showing the edufeed concept in a prototype. It works completely in the browser without any backend and simulates the nostr feed in the browser. The purpose is for demonstrating the idea. One can create multiple accounts in the browser and easily switch between them.
+The prototype is entirely browser-based, requiring no backend. It simulates a Nostr feed directly in the browser, allowing users to explore the idea. You can create multiple accounts within the browser and seamlessly switch between them.
 
 ## Setup
 
-1. Clone the repository
-2. Install the dependencies via `bun install`
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
 
-## Get started
+## Getting Started
 
-Start the dev server:
-
+To start the development server:
 ```bash
 bun dev
 ```
 
-Build the app for production:
-
+To build the app for production:
 ```bash
 bun run build
 ```
 
-Preview the production build locally:
-
+To preview the production build locally:
 ```bash
 bun preview
 ```
 
 ## Maintenance
 
-Update dependencies:
-
+To update dependencies:
 ```bash
 bun update
 ```
 
 ## Todos
 
-- Start OER from a curated OER
+- Start OER from a curated OER.
 
 ## Limitations
 
-- No nostr / browser only => Thus it cannot show edufeed between multiple browser sessions
-- No storage => Everything is deleted if the page is reloaded
+- **Browser-only simulation**: The prototype does not support Nostr feeds across multiple browser sessions.
+- **No persistent storage**: All data is lost upon page reload.
