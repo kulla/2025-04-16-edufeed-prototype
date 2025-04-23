@@ -23,6 +23,7 @@ import CreateMaterial from './components/create-material'
 import Explore from './components/explore'
 import Notifications from './components/notifications'
 import CurratedOER from './components/currated-oer'
+import UserIcon from './components/user-icon'
 
 function AppWithProvider() {
   return (
@@ -68,7 +69,7 @@ function App() {
             <NavLink
               key={account}
               label={`Benutzer „${account}“`}
-              leftSection={<User size={18} />}
+              leftSection={<UserIcon account={account} />}
               opened
             >
               <NavLink

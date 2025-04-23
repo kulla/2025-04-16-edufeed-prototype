@@ -13,6 +13,7 @@ import { useDisclosure } from '@mantine/hooks'
 import useEventLog from '../hooks/event-log'
 import { useState } from 'react'
 import { BookText } from 'lucide-react'
+import UserBadge from './user-badge'
 
 export default function CreateMaterial({ account }: { account: string }) {
   const [opened, { open, close }] = useDisclosure(false)
@@ -35,7 +36,7 @@ export default function CreateMaterial({ account }: { account: string }) {
   return (
     <>
       <Title order={2} mb="lg">
-        Meine Lernmaterialien (Konto: {account})
+        Meine Lernmaterialien (Konto: <UserBadge account={account} />)
       </Title>
       <Group mb="lg">
         <Button onClick={open}>Lernmaterial hinzufügen</Button>

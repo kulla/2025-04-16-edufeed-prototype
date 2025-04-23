@@ -10,6 +10,7 @@ import {
 } from '@mantine/core'
 import { useState } from 'react'
 import useEventLog from '../hooks/event-log'
+import UserBadge from './user-badge'
 
 export default function CuratedOER({ account }: { account: string }) {
   const { events, addEvent } = useEventLog()
@@ -47,7 +48,7 @@ export default function CuratedOER({ account }: { account: string }) {
   return (
     <Container size="lg" mt="md">
       <Title order={2} mb="md">
-        Kuratierte OERs (Konto: {account})
+        Kuratierte OERs (Konto: <UserBadge account={account} />)
       </Title>
 
       {untrustedAccounts.length > 0 ? (
@@ -69,11 +70,11 @@ export default function CuratedOER({ account }: { account: string }) {
         {curatedOERs.map((event) => (
           <Card key={event.eventId} shadow="sm" padding="lg" withBorder>
             <Title order={3} mb="md">
-              OER von „{event.account}”:
+              OER von <UserBadge account={event.account} />:
             </Title>
             <Text style={{ whiteSpace: 'pre-wrap' }}>{event.content}</Text>
             <Text mt="md" size="sm" c="dimmed">
-              Kuratiert von: {event.actor}
+              Kuratiert von: <UserBadge account={event.actor} size={14} />
             </Text>
           </Card>
         ))}
