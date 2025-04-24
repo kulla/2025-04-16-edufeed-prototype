@@ -4,6 +4,10 @@ This repository demonstrates the Edufeed concept, showcasing how it can be used 
 
 The prototype is entirely browser-based, requiring no backend. It simulates a Nostr feed directly in the browser, allowing users to explore the idea. You can create multiple accounts within the browser and seamlessly switch between them.
 
+## Explanation video
+
+https://github.com/user-attachments/assets/298ca4ba-7f7a-4480-9447-a805995ee789
+
 ## Setup
 
 1. Clone this repository
