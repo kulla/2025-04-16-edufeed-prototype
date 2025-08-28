@@ -12,9 +12,9 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@mantine/core": "^7.17.8",
+    "@mantine/core": "^8.2.7",
     "@mantine/form": "^8.2.4",
-    "@mantine/hooks": "^7.17.8",
+    "@mantine/hooks": "^8.2.7",
     "lucide-react": "^0.525.0",
     "ramda": "^0.30.1",
     "react": "^19.1.1",
