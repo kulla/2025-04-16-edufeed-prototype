@@ -6,7 +6,7 @@
       "dependencies": {
         "@mantine/core": "^8.2.8",
         "@mantine/form": "^8.2.8",
-        "@mantine/hooks": "^8.2.7",
+        "@mantine/hooks": "^8.2.8",
         "lucide-react": "^0.542.0",
         "ramda": "^0.30.1",
         "react": "^19.1.1",
@@ -64,7 +64,7 @@
 
     "@mantine/form": ["@mantine/form@8.2.8", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "klona": "^2.0.6" }, "peerDependencies": { "react": "^18.x || ^19.x" } }, "sha512-edigaUCmyxoPcqhMgkgJHXRgbzR1tym88xQNNgfGA1KYc9gr0BTk/3dOa5B93HIVdO9/DEXZwYKN4cjrKPDY+g=="],
 
-    "@mantine/hooks": ["@mantine/hooks@8.2.7", "", { "peerDependencies": { "react": "^18.x || ^19.x" } }, "sha512-DV0RdFBI0g0Bu7CWipIIiPK6d8+pTNXTbIOF4N+VZ6LAIpZPk5ldtb8sGaTVyQtQhEjrChrCxfkrLiNGTOAwiw=="],
+    "@mantine/hooks": ["@mantine/hooks@8.2.8", "", { "peerDependencies": { "react": "^18.x || ^19.x" } }, "sha512-KK1krCcXizWT6JF8gWexv58imQBbviylAJqSqdZ4zUPgrpe81ehMyfxo5Z9EZsnSwMxkB4RLMhCCJhC5g8GvLA=="],
 
     "@module-federation/error-codes": ["@module-federation/error-codes@0.18.0", "", {}, "sha512-Woonm8ehyVIUPXChmbu80Zj6uJkC0dD9SJUZ/wOPtO8iiz/m+dkrOugAuKgoiR6qH4F+yorWila954tBz4uKsQ=="],
 
