@@ -1,5 +1,5 @@
-import { Card, Grid, Text, Title, Group } from '@mantine/core'
-import { User, BookText, HeartHandshake, BookmarkCheck } from 'lucide-react'
+import { Card, Grid, Group, Text, Title } from '@mantine/core'
+import { BookmarkCheck, BookText, HeartHandshake, User } from 'lucide-react'
 import useEventLog from '../hooks/event-log'
 
 export default function Statistics() {

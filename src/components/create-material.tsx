@@ -1,18 +1,18 @@
 import {
   Button,
-  Group,
-  Title,
-  Modal,
-  Textarea,
   Card,
-  Text,
-  SimpleGrid,
   Flex,
+  Group,
+  Modal,
+  SimpleGrid,
+  Text,
+  Textarea,
+  Title,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import useEventLog from '../hooks/event-log'
-import { useState } from 'react'
 import { BookText } from 'lucide-react'
+import { useState } from 'react'
+import useEventLog from '../hooks/event-log'
 import UserBadge from './user-badge'
 
 export default function CreateMaterial({ account }: { account: string }) {

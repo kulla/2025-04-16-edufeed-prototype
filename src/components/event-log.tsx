@@ -1,13 +1,13 @@
-import { Container, Flex, Title, Text } from '@mantine/core'
-import useEventLog, { type Event } from '../hooks/event-log'
+import { Container, Flex, Text, Title } from '@mantine/core'
 import {
-  BookText,
-  UserRoundPlus,
-  Heart,
   BookmarkCheck,
+  BookText,
   Handshake,
+  Heart,
+  UserRoundPlus,
 } from 'lucide-react'
 import { reverse } from 'ramda'
+import useEventLog, { type Event } from '../hooks/event-log'
 
 export default function EventLog() {
   const { events } = useEventLog()

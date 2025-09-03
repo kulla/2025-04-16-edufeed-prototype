@@ -4,7 +4,11 @@ export default function UserIcon({
   account,
   size = 18,
   inline = false,
-}: { account: string; size?: number; inline?: boolean }) {
+}: {
+  account: string
+  size?: number
+  inline?: boolean
+}) {
   return (
     <Avatar
       src={`https://api.dicebear.com/9.x/identicon/svg?seed=${encodeURIComponent(account)}`}

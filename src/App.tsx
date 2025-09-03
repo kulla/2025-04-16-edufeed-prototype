@@ -1,29 +1,26 @@
 import { AppShell, Burger, NavLink, ScrollArea, Title } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
+  Bell,
+  BookmarkCheck,
+  BookText,
   ChartColumn,
+  Globe,
   HeartHandshake,
   ScrollText,
   UserRoundPlus,
-  Users,
-  User,
-  BookText,
-  Globe,
-  BookmarkCheck,
-  Bell,
 } from 'lucide-react'
 import { useState } from 'react'
-
-import useEventLog, { EventLogProvider } from './hooks/event-log'
-import EventLog from './components/event-log'
-import Statistics from './components/statistics'
 import AddAccount from './components/add-account'
-import { getCurrentUserNames } from './utils'
 import CreateMaterial from './components/create-material'
+import CurratedOER from './components/currated-oer'
+import EventLog from './components/event-log'
 import Explore from './components/explore'
 import Notifications from './components/notifications'
-import CurratedOER from './components/currated-oer'
+import Statistics from './components/statistics'
 import UserIcon from './components/user-icon'
+import useEventLog, { EventLogProvider } from './hooks/event-log'
+import { getCurrentUserNames } from './utils'
 
 function AppWithProvider() {
   return (
