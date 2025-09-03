@@ -1,6 +1,6 @@
-import { Container, Flex, Title, Text, Card, Group } from '@mantine/core'
+import { Card, Container, Flex, Text, Title } from '@mantine/core'
+import { BookmarkCheck, Heart } from 'lucide-react'
 import useEventLog from '../hooks/event-log'
-import { Heart, BookmarkCheck } from 'lucide-react'
 import UserBadge from './user-badge'
 
 export default function Notifications({ account }: { account: string }) {
@@ -31,7 +31,9 @@ export default function Notifications({ account }: { account: string }) {
 
 function NotificationCard({
   event,
-}: { event: { type: string; actor: string; content: string } }) {
+}: {
+  event: { type: string; actor: string; content: string }
+}) {
   return (
     <Card shadow="sm" padding="lg" mb="md" withBorder>
       <Flex align="center" gap="md">

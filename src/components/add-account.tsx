@@ -1,4 +1,4 @@
-import { TextInput, Group, Button, Title, Container } from '@mantine/core'
+import { Button, Container, Group, TextInput, Title } from '@mantine/core'
 import { useForm } from '@mantine/form'
 import useEventLog from '../hooks/event-log'
 import { getCurrentUserNames } from '../utils'

@@ -1,12 +1,12 @@
 import {
-  Card,
-  Title,
-  Text,
-  SimpleGrid,
-  Container,
-  NativeSelect,
   Button,
+  Card,
+  Container,
   Group,
+  NativeSelect,
+  SimpleGrid,
+  Text,
+  Title,
 } from '@mantine/core'
 import { useState } from 'react'
 import useEventLog from '../hooks/event-log'

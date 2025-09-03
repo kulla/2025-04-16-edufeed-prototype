@@ -1,7 +1,7 @@
-import { Group, Button, Card, Title, Text, Container } from '@mantine/core'
-import useEventLog from '../hooks/event-log'
-import { reverse } from 'ramda'
+import { Button, Card, Container, Group, Text, Title } from '@mantine/core'
 import { BookmarkCheck, Heart } from 'lucide-react'
+import { reverse } from 'ramda'
+import useEventLog from '../hooks/event-log'
 import UserBadge from './user-badge'
 
 export default function Explore({ account }: { account: string }) {
@@ -23,13 +23,11 @@ export default function Explore({ account }: { account: string }) {
       <Title order={2} mb="md">
         Entdecke andere OERs (Konto: <UserBadge account={account} />)
       </Title>
-      {otherContents.map((event) => (
-        <OERCard key={event.eventId} event={event} />
-      ))}
+      {otherContents.map(renderOERCard)}
     </Container>
   )
 
-  function OERCard({ event }: { event: (typeof otherContents)[number] }) {
+  function renderOERCard(event: (typeof otherContents)[number]) {
     const isLiked = likedContents.some(
       (likedEvent) =>
         likedEvent.content === event.content &&
