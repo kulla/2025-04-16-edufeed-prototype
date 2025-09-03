@@ -16,7 +16,7 @@
     "@mantine/form": "^8.2.8",
     "@mantine/hooks": "^8.2.8",
     "lucide-react": "^0.542.0",
-    "ramda": "^0.30.1",
+    "ramda": "^0.31.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
