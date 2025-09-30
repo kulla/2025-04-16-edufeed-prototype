@@ -12,9 +12,9 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.1",
-    "@mantine/form": "^8.3.1",
-    "@mantine/hooks": "^8.3.1",
+    "@mantine/core": "^8.3.2",
+    "@mantine/form": "^8.3.2",
+    "@mantine/hooks": "^8.3.2",
     "lucide-react": "^0.544.0",
     "ramda": "^0.31.3",
     "react": "^19.1.1",
@@ -22,10 +22,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
-    "@rsbuild/core": "^1.5.11",
-    "@rsbuild/plugin-react": "^1.4.0",
+    "@rsbuild/core": "^1.5.13",
+    "@rsbuild/plugin-react": "^1.4.1",
     "@types/ramda": "^0.31.1",
-    "@types/react": "^19.1.13",
+    "@types/react": "^19.1.15",
     "@types/react-dom": "^19.1.9",
     "typescript": "^5.9.2"
   }
