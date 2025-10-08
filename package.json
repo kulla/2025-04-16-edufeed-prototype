@@ -21,7 +21,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.4",
+    "@biomejs/biome": "^2.2.5",
     "@rsbuild/core": "^1.5.13",
     "@rsbuild/plugin-react": "^1.4.1",
     "@types/ramda": "^0.31.1",
